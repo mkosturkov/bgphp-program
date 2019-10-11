@@ -1,0 +1,131 @@
+.main-container {
+    position: relative;
+    width: 100%;
+    font-family: sans-serif;
+    font-size: 16px;
+}
+
+.main-container * {
+    position: relative;
+}
+
+.programme {
+    margin: auto;
+}
+
+.day-buttons {
+    display: flex;
+    background: silver;
+}
+
+.day-button {
+    height: 50px;
+    flex: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.time-schedule {
+    display: table;
+    width: 100%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+tr {
+    border-top: 1px solid black;
+}
+
+thead tr {
+    border-top: none;
+}
+
+td, th {
+    text-align: center;
+    height: 3em;
+}
+
+.break {
+    font-weight: bold;
+    background-color: #e5e5e5;
+}
+
+@media (max-width: 767px) {
+    .programme {
+        position: relative;
+        width: 100%;
+    }
+
+    .day-buttons {
+        float: left;
+        width: 50px;
+        height: 100vh;
+        flex-direction: column;
+        margin-right: 10px;
+    }
+
+    .day-button span {
+        white-space: nowrap;
+        transform: rotate(-90deg);
+    }
+
+    table {
+        float: left;
+        width: calc(100% - 60px);
+    }
+
+    table, tbody, thead, tr, th {
+        display: block;
+        overflow: auto;
+    }
+
+    thead tr {
+        display: flex;
+        margin-bottom: 10px;
+    }
+
+    th:first-child {
+        display: none;
+    }
+
+    th {
+        display: flex;
+        width: 33%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    th:nth-child(3) {
+        background: silver;
+    }
+
+    td {
+        float: left;
+        display: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    td:first-child,
+    td:nth-child(2)
+    {
+        display: block;
+        text-align: center;
+        line-height: 3em;
+    }
+
+    td:first-child {
+        width: 80px;
+    }
+
+    td:nth-child(2) {
+        width: calc(100% - 80px);
+    }
+
+
+}
