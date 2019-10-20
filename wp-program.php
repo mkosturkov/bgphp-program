@@ -113,6 +113,118 @@
         font-weight: bold;
     }
 
+    .main-container {
+        position: relative;
+        width: 100%;
+        font-family: "Montserrat", sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 1em;
+    }
+
+    .main-container * {
+        position: relative;
+    }
+
+    .main-container h1 {
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .programme {
+        margin: auto;
+    }
+
+    .day-buttons {
+        display: flex;
+    }
+
+    .day-button {
+        height: 50px;
+        flex: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .day-button.active {
+        background: #4cb7b0;
+        color: white;
+        font-weight: bold;
+    }
+
+    .days-container {
+        display: none;
+    }
+
+    .days-container.active {
+        display: block;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    tr {
+        border-top: 1px solid black;
+    }
+
+    thead tr {
+        border-top: none;
+    }
+
+    td, th {
+        text-align: center;
+        height: 3em;
+        width: 30%;
+        border: 1px solid black;
+    }
+
+    td:first-child, th {
+        border: none;
+    }
+
+    tr:last-child td:first-child {
+        border-bottom: 1px solid black;
+    }
+
+    td:nth-child(2) {
+        border-left: none;
+    }
+
+    td:last-child {
+        border-right: none;
+    }
+
+    th:first-child, td:first-child {
+        width: 10%;
+    }
+
+    .break {
+        font-weight: bold;
+        background-color: #4cb7b02b;
+    }
+
+    .lunch-break {
+        height: 6em;
+    }
+
+    .talk-title, .speaker-name {
+        display: block;
+    }
+
+    .speaker-name {
+        margin-top: 0.5em;
+        font-style: italic;
+        font-weight: 400;
+    }
+
+    .unConf {
+        font-weight: bold;
+    }
+
     @media (max-width: 767px) {
         .programme {
             position: relative;
