@@ -15,7 +15,6 @@
 
 .day-buttons {
     display: flex;
-    background: silver;
 }
 
 .day-button {
@@ -25,6 +24,18 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+}
+
+.day-button.active {
+    background: silver;
+}
+
+.days-container {
+    display: none;
+}
+
+.days-container.active {
+    display: block;
 }
 
 .time-schedule {
@@ -48,11 +59,49 @@ thead tr {
 td, th {
     text-align: center;
     height: 3em;
+    width: 30%;
+    border: 1px solid black;
+}
+
+td:first-child, th {
+    border: none;
+}
+
+tr:last-child td:first-child {
+    border-bottom: 1px solid black;
+}
+
+td:nth-child(2) {
+    border-left: none;
+}
+
+td:last-child {
+    border-right: none;
+}
+
+th:first-child, td:first-child {
+    width: 10%;
 }
 
 .break {
     font-weight: bold;
     background-color: #e5e5e5;
+}
+
+.lunch-break {
+    height: 6em;
+}
+
+.talk-title, .speaker-name {
+    display: block;
+}
+
+.speaker-name {
+    font-style: italic;
+}
+
+.unConf {
+    font-weight: bold;
 }
 
 @media (max-width: 767px) {
@@ -98,9 +147,10 @@ td, th {
         width: 33%;
         justify-content: center;
         align-items: center;
+        border: none;
     }
 
-    th:nth-child(3) {
+    th.active {
         background: silver;
     }
 
@@ -109,23 +159,41 @@ td, th {
         display: none;
         padding: 0;
         margin: 0;
+        border: none;
     }
 
     td:first-child,
-    td:nth-child(2)
+    td[colspan],
+    td.active
     {
-        display: block;
-        text-align: center;
-        line-height: 3em;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     td:first-child {
         width: 80px;
     }
 
-    td:nth-child(2) {
+    td.active, td[colspan] {
         width: calc(100% - 80px);
     }
 
+    .lunch-break td {
+        margin-top: 1.5em;
+    }
 
+    tr.unConf-time.active td {
+        height: 9em;
+    }
+
+    tr.unConf-time.active + tr,
+    tr.unConf-time.active + tr + tr
+    {
+        display: none;
+    }
+
+    tr:last-child td {
+        border-bottom: 1px solid black;
+    }
 }
