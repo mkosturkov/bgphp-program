@@ -1,7 +1,7 @@
 .main-container {
     position: relative;
     width: 100%;
-    font-family: sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-size: 16px;
 }
 
@@ -27,7 +27,9 @@
 }
 
 .day-button.active {
-    background: silver;
+    background: #4cb7b0;
+    color: white;
+    font-weight: bold;
 }
 
 .days-container {
@@ -85,7 +87,7 @@ th:first-child, td:first-child {
 
 .break {
     font-weight: bold;
-    background-color: #e5e5e5;
+    background-color: #4cb7b02b;
 }
 
 .lunch-break {
@@ -148,10 +150,12 @@ th:first-child, td:first-child {
         justify-content: center;
         align-items: center;
         border: none;
+        cursor: pointer;
     }
 
     th.active {
-        background: silver;
+        background: #4cb7b0;
+        color: white;
     }
 
     td {
