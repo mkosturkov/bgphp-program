@@ -3,10 +3,16 @@
     width: 100%;
     font-family: "Montserrat", sans-serif;
     font-size: 16px;
+    font-weight: 500;
+    line-height: 1em;
 }
 
 .main-container * {
     position: relative;
+}
+
+.main-container h1 {
+    text-align: center;
 }
 
 .programme {
@@ -38,11 +44,6 @@
 
 .days-container.active {
     display: block;
-}
-
-.time-schedule {
-    display: table;
-    width: 100%;
 }
 
 table {
@@ -99,7 +100,9 @@ th:first-child, td:first-child {
 }
 
 .speaker-name {
+    margin-top: 0.5em;
     font-style: italic;
+    font-weight: 400;
 }
 
 .unConf {
