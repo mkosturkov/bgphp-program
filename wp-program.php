@@ -458,7 +458,7 @@
                     </td>
                     <td class="active">
                                 <span class="talk-title">
-                                    To Be Announced
+                                    Theory of programming: packaging principles
                                 </span>
                         <span class="speaker-name">
                                     Alexander Makarov
