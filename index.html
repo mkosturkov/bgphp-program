@@ -178,7 +178,12 @@
                         </tr>
                         <tr class="break lunch-break">
                             <td>12:20</td>
-                            <td colspan="3">Lunch Break</td>
+                            <td colspan="3">
+                                <section class="sponsor-talk tys-track">
+                                    Paysera: 3 reasons to integrate Paysera payment gateway (P.S. One is &#x1F4B2;)
+                                </section>
+                                <span class="break-title">Lunch Break</span>
+                            </td>
                         </tr>
                         <tr>
                             <td>13:50</td>
@@ -553,6 +558,12 @@
           });
           if (colIdx === 2) {
             table.querySelector('tr.unConf-time').classList.add('active');
+          }
+          var sponsorTalk = table.querySelector('.sponsor-talk');
+          if (sponsorTalk && colIdx === 0) {
+            sponsorTalk.classList.add('active');
+          } else if (sponsorTalk) {
+            sponsorTalk.classList.remove('active');
           }
         });
       });

@@ -1,8 +1,7 @@
 <?php /* Template Name: BGPHP19 Schedule */ ?>
 <?php get_header();?>
 
-<style>
-    .main-container {
+<style>.main-container {
         position: relative;
         width: 100%;
         max-width: 1280px;
@@ -116,6 +115,23 @@
         font-weight: bold;
     }
 
+    .lunch-break td {
+        height: 8em;
+    }
+
+    .sponsor-talk {
+        position: absolute;
+        top: 0;
+        box-sizing: border-box;
+        width: 33.3333%;
+        height: 50%;
+        padding: 10px 0;
+        background: white;
+        font-weight: 500;
+        border: 1px solid black;
+        border-top: none;
+    }
+
     @media (max-width: 767px) {
         .programme {
             position: relative;
@@ -210,6 +226,25 @@
         tr:last-child td {
             border-bottom: 1px solid black;
         }
+
+        tr.lunch-break, tr.lunch-break td {
+            height: 12em;
+        }
+
+        .sponsor-talk {
+            display: none;
+            position: relative;
+            top: -20%;
+            height: 50%;
+            width: 100%;
+            border-right: none;
+        }
+
+        .sponsor-talk.active {
+            display: block;
+        }
+
+
     }
 </style>
 
@@ -382,7 +417,12 @@
                 </tr>
                 <tr class="break lunch-break">
                     <td>12:20</td>
-                    <td colspan="3">Lunch Break</td>
+                    <td colspan="3">
+                        <section class="sponsor-talk tys-track">
+                            Paysera: 3 reasons to integrate Paysera payment gateway (P.S. One is &#x1F4B2;)
+                        </section>
+                        <span class="break-title">Lunch Break</span>
+                    </td>
                 </tr>
                 <tr>
                     <td>13:50</td>
@@ -757,6 +797,12 @@
           });
           if (colIdx === 2) {
             table.querySelector('tr.unConf-time').classList.add('active');
+          }
+          var sponsorTalk = table.querySelector('.sponsor-talk');
+          if (sponsorTalk && colIdx === 0) {
+            sponsorTalk.classList.add('active');
+          } else if (sponsorTalk) {
+            sponsorTalk.classList.remove('active');
           }
         });
       });

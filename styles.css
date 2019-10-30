@@ -112,6 +112,23 @@ th:first-child, td:first-child {
     font-weight: bold;
 }
 
+.lunch-break td {
+    height: 8em;
+}
+
+.sponsor-talk {
+    position: absolute;
+    top: 0;
+    box-sizing: border-box;
+    width: 33.3333%;
+    height: 50%;
+    padding: 10px 0;
+    background: white;
+    font-weight: 500;
+    border: 1px solid black;
+    border-top: none;
+}
+
 @media (max-width: 767px) {
     .programme {
         position: relative;
@@ -206,4 +223,23 @@ th:first-child, td:first-child {
     tr:last-child td {
         border-bottom: 1px solid black;
     }
+
+    tr.lunch-break, tr.lunch-break td {
+        height: 12em;
+    }
+
+    .sponsor-talk {
+        display: none;
+        position: relative;
+        top: -20%;
+        height: 50%;
+        width: 100%;
+        border-right: none;
+    }
+
+    .sponsor-talk.active {
+        display: block;
+    }
+
+
 }
