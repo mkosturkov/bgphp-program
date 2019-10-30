@@ -264,7 +264,7 @@
                 </tr>
                 <tr class="break lunch-break">
                     <td>12:00</td>
-                    <td colspan="3">Lunch Break</td>
+                    <td colspan="3">Break</td>
                 </tr>
                 <tr>
                     <td>14:00</td>
