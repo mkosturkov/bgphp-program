@@ -6,32 +6,47 @@
     <title>Bulgaria PHP Conference 2019 Program</title>
     <link type="text/css" rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
-
 </head>
 <body>
     <div class="main-container">
         <h1>Schedule</h1>
         <div class="programme">
-            <div class="day-buttons">
-                <div class="day-button">
-                    <span>Workshop Day</span>
+            <div class="fixed-container">
+                <div class="day-buttons">
+                    <div class="day-button day-button-0 workshops">
+                        <span>Workshop Day</span>
+                    </div>
+                    <div class="day-button day-button-1 active">
+                        <span>Day 1</span>
+                    </div>
+                    <div class="day-button day-button-2">
+                        <span>Day 2</span>
+                    </div>
                 </div>
-                <div class="day-button active">
-                    <span>Day 1</span>
+
+                <div class="days-dropdown-wrapper">
+                    <select name="" id="">
+                        <option value="0">Workshop Day</option>
+                        <option selected value="1">Day 1</option>
+                        <option value="2">Day 2</option>
+                    </select>
                 </div>
-                <div class="day-button">
-                    <span>Day 2</span>
-                </div>
+
+                <ul class="track-list-btns talks-tracks">
+                    <li></li>
+                    <li data-col="0">Ty's Track</li>
+                    <li data-col="1" class="active">Track SiteGround</li>
+                    <li data-col="2">Track B</li>
+                </ul>
+
+                <ul class="track-list-btns workshops-tracks" style="display: none;">
+                    <li data-col="0" class="active">Track A</li>
+                    <li data-col="1">Track B</li>
+                </ul>
             </div>
+
             <div class="days-container">
                 <table>
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th class="active">Track A</th>
-                            <th>Track B</th>
-                        </tr>
-                    </thead>
                     <tbody>
                         <tr>
                             <td>08:30</td>
@@ -86,14 +101,6 @@
             </div>
             <div class="days-container active">
                 <table>
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Ty's Track</th>
-                            <th class="active">Track SiteGround</th>
-                            <th>Track B</th>
-                        </tr>
-                    </thead>
                     <tbody>
                         <tr>
                             <td>08:00</td>
@@ -313,14 +320,6 @@
             </div>
             <div class="days-container">
                 <table>
-                    <thead>
-                    <tr>
-                        <th></th>
-                        <th>Ty's Track</th>
-                        <th class="active">Track SiteGround</th>
-                        <th>Track B</th>
-                    </tr>
-                    </thead>
                     <tbody>
                         <tr>
                             <td>09:00</td>
@@ -533,8 +532,8 @@
         </div>
     </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
-
   (function () {
     document.querySelectorAll('.day-button').forEach(function (button, buttonIdx) {
       button.addEventListener('click', function () {
@@ -543,6 +542,19 @@
         });
         button.classList.add('active');
         document.querySelector('.days-container:nth-child(' + (buttonIdx + 2) + ')').classList.add('active');
+
+        if (button.classList.contains('workshops')) {
+            let workshopTracksList = document.getElementsByClassName('workshops-tracks')[0];
+            workshopTracksList.style.display = 'flex';
+            let talksTracksList = document.getElementsByClassName('talks-tracks')[0];
+            talksTracksList.style.display = 'none';
+        } else {
+            let workshopTracksList = document.getElementsByClassName('workshops-tracks')[0];
+            workshopTracksList.style.display = 'none';
+            let talksTracksList = document.getElementsByClassName('talks-tracks')[0];
+            talksTracksList.style.display = 'flex';
+        }
+
       });
     });
 
@@ -571,5 +583,65 @@
   })();
 </script>
 
+<script>
+    var $dayButtons = $('.fixed-container');
+    var fixmeTop = $dayButtons.offset().top;
+    $(window).scroll(function() {
+        var currentScroll = $(window).scrollTop();
+
+        if (currentScroll >= fixmeTop) {
+            $dayButtons.css({
+                position: 'fixed',
+                top: '0',
+                left: '0',
+            });
+            $('.track-list-btns.talks-tracks, .day-buttons').addClass('fixed');
+        } else {
+            $dayButtons.css({
+                position: 'static'
+            });
+            $('.track-list-btns.talks-tracks .day-buttons').removeClass('fixed');
+
+        }
+    });
+
+    $('.track-list-btns li').on('click', function (e) {
+        if ($(this).is(':first-child')) {
+            return false;
+        }
+
+        $('.track-list-btns li').removeClass('active');
+        $(this).addClass('active');
+        var colIdx = $(this).data('col') + 2;
+
+        $('.days-container table tr, .days-container table td, .days-container table th').removeClass('active');
+        $('.days-container table td:nth-child('+colIdx+')').addClass('active');
+        if ($(this).data('col') === 2) {
+            $('tr.unConf-time').addClass('active');
+        }
+
+        var sponsorTalk = $('.sponsor-talk');
+        if (sponsorTalk && $(this).data('col') == 0) {
+            sponsorTalk.addClass('active');
+        } else if (sponsorTalk) {
+            sponsorTalk.removeClass('active');
+        }
+    });
+
+    $('.days-dropdown-wrapper select').on('change', function () {
+        var index = $(this).val();
+        $('.day-button-' + index).trigger('click');
+    });
+
+    $(document).ready(function () {
+        var now = new Date(),
+          secondDate = new Date(2019, 10, 9, 23, 59, 0, 0);
+
+        if (now.getTime() > secondDate.getTime()) {
+            $('.day-button-2').trigger('click');
+            $('.days-dropdown-wrapper select').val(2);
+        }
+    });
+</script>
 </body>
 </html>
