@@ -22,6 +22,11 @@
     margin: auto;
 }
 
+.fixed-container {
+    width: 100%;
+    z-index: 10000000;
+}
+
 .day-buttons {
     display: flex;
 }
@@ -33,6 +38,8 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    opacity:1;
+    background:white;
 }
 
 .day-button.active {
@@ -130,6 +137,44 @@ th:first-child, td:first-child {
 }
 
 @media (max-width: 767px) {
+    .days-dropdown-wrapper {
+        display: block !important;
+    }
+    
+    .track-list-btns { 
+        margin-left: -40px;
+    }
+
+    .day-buttons {
+        display: none;
+    }
+
+    .track-list-btns.track-list li:first-child {
+        width: 0;
+        display: none;
+    }
+
+    .track-list-btns li {
+        height: 43px;
+        padding-top: 25px;
+    }
+
+    .track-list-btns li:not:first-child:hover {
+        cursor: pointer;
+    }
+
+    .track-list-btns li.active {
+        background: #4cb7b0;
+        color: white;
+    }
+
+    .track-list-btns.talks-tracks {
+        margin-left: -100px;
+        /*width: 90%;*/
+    }
+
+    .tra
+
     .programme {
         position: relative;
         width: 100%;
@@ -150,7 +195,6 @@ th:first-child, td:first-child {
 
     table {
         float: left;
-        width: calc(100% - 60px);
     }
 
     table, tbody, thead, tr, th {
@@ -240,6 +284,53 @@ th:first-child, td:first-child {
     .sponsor-talk.active {
         display: block;
     }
+}
 
+.fixed-container {
+    width: 100%;
+    background-color: white;
+}
+.track-list-btns {
+    display: flex;
+    align-items: stretch; /* Default */
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 0px;
+    padding-top: 20px;
+    font-weight: bold;
+    padding-bottom: 16px;
+    background-color: white;
+}
 
+.track-list-btns li {
+    display: block;
+    text-align: center;
+    flex: 1 1 auto; /* Default */
+    list-style-type: none;
+    width: 30%;
+}
+
+@media (min-width: 767px) {
+    .track-list-btns.talks-tracks li:first-child {
+    width: 4%;
+}
+
+.track-list-btns.talks-tracks.fixed, .day-buttons.fixed {
+    width: 1280px;
+    margin: 0 auto;
+}
+}
+
+    
+
+.days-dropdown-wrapper {
+    display: none;
+    background-color: white;
+    padding-top: 10px;
+}
+
+.days-dropdown-wrapper select {
+    display: block;
+    margin: 0 auto;
+    font-size: 20px;
 }
